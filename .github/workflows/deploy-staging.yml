@@ -17,6 +17,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run lint:types
+
   deploy:
     needs: lint
     runs-on: ubuntu-latest
@@ -24,12 +25,25 @@ jobs:
       group: staging
       cancel-in-progress: true
     steps:
-      - name: SSH Command
+      - name: Check Node.js and npm on server
         uses: D3rHase/ssh-command-action@v0.2.2
         with:
-          # hostname / IP of the server
           host: ${{ secrets.STAGING_SSH_HOST }}
           user: ${{ secrets.STAGING_SSH_USERNAME }}
           private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
           host_fingerprint: ${{ secrets.STAGING_SSH_FINGERPRINT }}
-          command: source ~/.nvm/nvm.sh; ~/deploy.sh
+          command: |
+            node -v
+            npm -v
+
+      - name: SSH Command
+        uses: D3rHase/ssh-command-action@v0.2.2
+        with:
+          host: ${{ secrets.STAGING_SSH_HOST }}
+          user: ${{ secrets.STAGING_SSH_USERNAME }}
+          private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          host_fingerprint: ${{ secrets.STAGING_SSH_FINGERPRINT }}
+          command: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            ~/deploy.sh
