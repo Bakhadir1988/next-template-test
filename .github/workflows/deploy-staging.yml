@@ -33,6 +33,9 @@ jobs:
           private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
           host_fingerprint: ${{ secrets.STAGING_SSH_FINGERPRINT }}
           command: |
+            echo "PATH: $PATH"
+            echo "NVM_DIR: $NVM_DIR"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             node -v
             npm -v
 
