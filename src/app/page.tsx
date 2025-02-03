@@ -19,7 +19,7 @@ export default function Home() {
           </li>
           <li>Save and see your changes instantly.</li>
           <li>Тест деплоя</li>
-          <li>xvxcvxvxcv</li>
+          <li>Деплой прошел</li>
         </ol>
 
         <div className={styles.ctas}>
