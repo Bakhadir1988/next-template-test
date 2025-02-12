@@ -20,6 +20,7 @@ export default function Home() {
           <li>Save and see your changes instantly.</li>
           <li>Тест деплоя</li>
           <li>Деплой прошел</li>
+          <li>Деплой прошел c window</li>
         </ol>
 
         <div className={styles.ctas}>
