@@ -21,6 +21,13 @@ export default function Home() {
           <li>Тест деплоя</li>
           <li>Деплой прошел</li>
           <li>Деплой прошел c window</li>
+          <li>Деплой прошел c window</li>
+          <li>Деплой прошел c window</li>
+          <li>Деплой прошел c window</li>
+          <li>Деплой прошел c window</li>
+          <li>Деплой прошел c window</li>
+          <li>Деплой прошел c window</li>
+          <li>Деплой прошел c window</li>
         </ol>
 
         <div className={styles.ctas}>
